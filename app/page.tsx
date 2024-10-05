@@ -1,101 +1,121 @@
-import Image from "next/image";
+"use client";
+import { useEffect } from "react";
+import Link from "next/link";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-export default function Home() {
+export default function LandingPage() {
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({ duration: 600 });
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="grow flex flex-col justify-center items-center p-8 text-lg overflow-hidden">
+      <div className="w-full p-10 bg-white rounded-lg shadow-lg space-y-16">
+        {/* Header Section */}
+        <section className="text-center space-y-4">
+          <h2 className="text-4xl">Springfield College</h2>
+          <h1 className="text-5xl">Professor Review</h1>
+          <p className="text-xl text-gray-800">
+            Find the best professor for your needs, powered by AI.
+          </p>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        {/* Features Section */}
+        <section className="flex flex-col md:flex-row justify-around items-center gap-4">
+          {/* Feature 1 */}
+          <div
+            className="flex flex-col gap-y-4 bg-gradient-to-r from-purple-400 to-indigo-600 p-6 rounded-lg shadow-xl text-white w-full md:w-[45%] text-center"
+            data-aos="flip-up"
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <h3 className="m-0">AI Recommendations</h3>
+            <p>
+              Share what you are looking for with our AI agent and receive
+              instant recommendations.
+            </p>
+            <Link href="/chat">
+              <button className="px-6 py-3 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-200">
+                Chat Now
+              </button>
+            </Link>
+          </div>
+
+          {/* Feature 2 */}
+          <div
+            className="flex flex-col gap-y-4 bg-gradient-to-r from-green-400 to-teal-600 p-6 rounded-lg shadow-xl text-white w-full md:w-[45%] text-center"
+            data-aos="flip-down"
           >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            <h3 className="m-0">Submit a Review</h3>
+            <p>
+              Submit a review about your professor and help others make informed
+              decisions.
+            </p>
+            <Link href="/create_review">
+              <button className="px-6 py-3 bg-white text-teal-600 font-semibold rounded-lg hover:bg-gray-200">
+                Submit Review
+              </button>
+            </Link>
+          </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section className="flex flex-col items-center gap-y-8">
+          <h2 className="text-3xl font-semibold text-gray-800">
+            Behind The Scenes
+          </h2>
+          <div className="flex flex-col justify-around gap-y-12 w-full">
+            <div
+              className="bg-gradient-to-r from-yellow-400 to-orange-500 p-6 rounded-lg shadow-xl text-white w-full text-center"
+              data-aos="fade-right"
+            >
+              <h4 className="text-xl font-semibold">
+                Generate Vector Embeddings
+              </h4>
+              <p>Generate vector embeddings for reviews using Cohere.</p>
+            </div>
+
+            <div
+              className="bg-gradient-to-r from-sky-700 to-indigo-700 p-6 rounded-lg shadow-xl text-white w-full text-center"
+              data-aos="fade-left"
+            >
+              <h4 className="text-xl font-semibold">Store Embeddings</h4>
+              <p>Save the vector embeddings in our Pinecone index.</p>
+            </div>
+
+            <div
+              className="bg-gradient-to-r from-red-400 to-pink-500 p-6 rounded-lg shadow-xl text-white w-full text-center"
+              data-aos="fade-right"
+            >
+              <h4 className="text-xl font-semibold">Retrieve Best Matches</h4>
+              <p>
+                Get the best matching results from Pinecone based on user
+                queries.
+              </p>
+            </div>
+
+            <div
+              className="bg-gradient-to-r from-purple-800 to-blue-700 p-6 rounded-lg shadow-xl text-white w-full text-center"
+              data-aos="fade-left"
+            >
+              <h4 className="text-xl font-semibold">Chat with LLM</h4>
+              <p>
+                Engage in meaningful conversations with the Groq API using
+                contextual data.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="text-center" data-aos="zoom-in">
+          <Link href="/chat">
+            <button className="px-8 py-4 bg-purple-600 text-white text-xl font-bold rounded-lg shadow-md hover:bg-purple-700">
+              Get Started
+            </button>
+          </Link>
+        </section>
+      </div>
+    </main>
   );
 }
