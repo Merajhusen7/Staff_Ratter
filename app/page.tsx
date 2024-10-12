@@ -119,3 +119,11 @@ export default function LandingPage() {
     </main>
   );
 }
+
+
+
+/*
+1. Behind the sences ko tya change garne
+2. Ai recomendation Change garera recommander rakhne
+3.tyo repo bata Chat now submit review bujhera copy paste garne
+*/
